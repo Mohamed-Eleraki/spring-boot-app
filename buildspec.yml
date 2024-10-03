@@ -1,0 +1,94 @@
+version: 0.2
+env:
+  variables: 
+    TERRAFORM_VERSION: "1.5.6"
+    #key: "value"
+#
+#  parameter-store:
+#    key: "value"
+#
+#  secrets-manager:
+#    key: "value"
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.12
+    
+    on-failuer: ABORT
+    commands: |
+      echo "Installing terraform"
+      yum install -y wget unzip
+      yum clean all
+      tf_version=$TERRAFORM_VERSION
+      wget https://releases.hashicorp.com/terraform/"$TERRAFORM_VERSION"/terraform_"$TERRAFORM_VERSION"_linux_amd64.zip
+      unzip terraform_"$TERRAFORM_VERSION"_linux_amd64.zip
+      chmod 775 terraform
+      mv terraform /usr/local/bin/
+      terraform --version
+      rm terraform_"$TERRAFORM_VERSION"_linux_amd64.zip
+      ls -al /usr/local/bin/terraform
+
+  pre_build:
+    on-failure: ABORT
+    commands: |
+      if [ "$STAGE_TYPE" = "plan" ]; then
+        echo "Filter on Plan stage";
+        echo terraform plan started on `date`
+        #cd "CODEBUILD_SRC_DIR/AWS_Demo/37-build-test-pipeline";
+        cd "infra";
+        ls -lathr;
+        terraform init;
+        terraform validate;
+        terraform plan -out tfplan;
+      else
+        echo "No Plan stage";
+      fi
+
+  build:
+    on-failure: ABORT
+    commands: |
+      if  [ "$STAGE_TYPE" = "apply" ]; then
+        echo  "Filter on Apply stage";
+        echo terraform execution started on `date`;
+        ls -lathr;
+        #cd "$CODEBUILD_SRC_DIR/AWS_Demo/37-build-test-pipeline";
+        cd "infra";
+        ls -lathr;
+        terraform apply tfplan;
+      else
+        echo "No Apply stage";
+      fi
+
+  post_build:
+    on-failure: CONTINUE
+    commands: |
+      echo "Fetching provisioning details"
+      terraform show -json tfplan > tfplan.json
+      yum install -y jq
+      echo "print out terrafrom version and json format version"
+      jq '.terraform_version, .format_version' tfplan.json
+      echo ""
+      echo "print out provider config"
+      jq '.configuration.provider_config' tfplan.json
+      echo ""
+      echo "print out resource config"
+      jq '.configuration.root_module.resources' tfplan.json
+      echo ""
+      echo "print out outputs"
+      jq '.outputs' tfplan.json
+      echo ""
+      echo "print out resource changes"
+      jq '.resource_changes' tfplan.json
+      echo ""
+      echo "print out resource config"
+      jq '.configuration.root_module.resources' tfplan.json
+      echo ""
+      echo "print out provider config"
+      jq '.configuration.provider_config' tfplan.json
+      echo ""
+      echo "print out provider config"
+      jq '.configuration.provider_config' tfplan.json
+      echo ""
+      echo "print out lock file configuration"
+      jq '.configuration.lock_version' tfplan.json
