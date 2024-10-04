@@ -12,12 +12,12 @@ terraform {
     bucket  = "erakiterrafromstatefiles"
     key     = "spring-boot-app/spring-boot-app.tfstate"
     region  = "us-east-1"
-    profile = "eraki"
+    #profile = "eraki"
   }
 }
 
 # Configure aws provider
 provider "aws" {
   region  = "us-east-1"
-  profile = "eraki"
+  #profile = "eraki"
 }
