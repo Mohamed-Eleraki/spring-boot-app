@@ -9,6 +9,13 @@ resource "aws_security_group" "alb_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+    ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]  # this should be restricted
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
@@ -36,6 +43,18 @@ resource "aws_launch_template" "web_launch_template" {
     associate_public_ip_address = true
     security_groups             = [aws_security_group.alb_sg.id]
   }
+
+  user_data = base64encode(<<-EOF
+    #!/bin/bash
+    # Install Apache HTTP Server
+    yum update -y
+    yum install -y httpd
+    systemctl start httpd
+    systemctl enable httpd
+    # Create a simple index.html file for testing
+    echo "<h1>Welcome to the Web Server powered by Auto Scaling Group</h1>" > /var/www/html/index.html
+  EOF
+  )
 }
 
 resource "aws_autoscaling_group" "web_asg" {
