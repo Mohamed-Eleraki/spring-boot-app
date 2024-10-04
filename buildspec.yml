@@ -55,6 +55,9 @@ phases:
         #cd "$CODEBUILD_SRC_DIR/AWS_Demo/37-build-test-pipeline";
         cd "infra";
         ls -lathr;
+        terraform init;
+        terraform validate;
+        terraform plan -out tfplan;
         terraform apply tfplan;
       else
         echo "No Apply stage";
