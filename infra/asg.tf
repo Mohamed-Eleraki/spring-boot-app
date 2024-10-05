@@ -46,13 +46,13 @@ resource "aws_launch_template" "web_launch_template" {
 
   user_data = base64encode(<<-EOF
     #!/bin/bash
-    # Install Apache HTTP Server
-    yum update -y
-    yum install -y httpd
-    systemctl start httpd
-    systemctl enable httpd
-    # Create a simple index.html file for testing
-    echo "<h1>Welcome to the Web Server powered by Auto Scaling Group</h1>" > /var/www/html/index.html
+    ## Install Apache HTTP Server
+    #yum update -y
+    #yum install -y httpd
+    #systemctl start httpd
+    #systemctl enable httpd
+    ## Create a simple index.html file for testing
+    #echo "<h1>Welcome to the Web Server powered by Auto Scaling Group</h1>" > /var/www/html/index.html
   EOF
   )
 }
