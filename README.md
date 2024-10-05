@@ -39,11 +39,11 @@ Below are the project directoy structure<br>
     ├── app.py             >> Python application file<br>
     └── prerequisites.sh   >> Prerequisites should be installed first<br>
 ```
-
+<br><br>
 ## Project Commits
 Below are the commits made to the project:
 ![Architecture Diagram](./project_commits.png)
-
+<br><br>
 ## Python Flask application
 
 > The Python Flask application is a simple web server that accepts HTTP requests and returns a response. The connection to RDS is successfull, let's discover the code toghether below:
@@ -74,7 +74,7 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
 
 ```
-
+<br><br>
 ## Run the Flask application manually
 First you need to run the following commands:<br>
 ```bash
