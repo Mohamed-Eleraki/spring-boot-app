@@ -7,11 +7,11 @@ In this project will deploy a highly available appcalition and database. the mai
 - Build a simple Python Flask application that build a connection with The RDS.
 <br> 
 
-> The Infrastructure provisioning will be automated whereby AWS Pipeline besides IaC Terraform, for more info view the Deploy_a_highly_available_Sprint_application.pdf document.<br><br>
+> The Infrastructure provisioning will be automated whereby AWS Pipeline besides IaC Terraform, for more info view the **Deploy_a_highly_available_Sprint_application.pdf** document.<br><br>
 
 ## Architecture Diagram
-
-![Architecture Diagram](./Architecture Diagram.drawio.png)
+Below is the architecture diagram of the project:
+![Architecture Diagram](./Architecture%20Diagram.drawio.png)
 
 <br><br>
 
