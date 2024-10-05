@@ -10,29 +10,29 @@ The Infrastructure provisioning will be automated whereby AWS Pipeline besides I
 
 ## Architecture Diagram
 
-![2M Teams](/Architecture Diagram.drawio.png)
+![Architecture Diagram](Architecture Diagram.drawio.png)
 <br><br>
 
 
 ## Directory structure discovery
 
 
-├── buildspec.yml  >> AWS pipeline configuration file.
-├── infra          >> Terrafrom resources directory
-│   ├── asg.tf
-│   ├── configureProvider.tf  >> terrafrom provider configurations
-│   ├── igw.tf             >> internet gateway resources
-│   ├── lb.tf              >> load balancer resources
-│   ├── locals.tf          >> local variables
-│   ├── rds.tf             >> RDS resources
-│   ├── rt.tf              >> Route table resources
-│   ├── sg.tf              >> Security group resources
-│   ├── subnet.tf          >> Subnet resources
-│   ├── terraform.tfvars   >> Variable values file
-│   ├── variables.tf       >> Variable definition file
-│   └── vpc.tf             >> VPC resources.
-├── README.md
-└── srcApp                 >> Python Flask source code
-    ├── app.py             >> Python application file
-    └── prerequisites.sh   >> Prerequisites should be installed first
+├── buildspec.yml  >> AWS pipeline configuration file.<br>
+├── infra          >> Terrafrom resources directory<br>
+│   ├── asg.tf                >> Auto-scaling group resources<br>
+│   ├── configureProvider.tf  >> terrafrom provider configurations<br>
+│   ├── igw.tf             >> internet gateway resources<br>
+│   ├── lb.tf              >> load balancer resources<br>
+│   ├── locals.tf          >> local variables<br>
+│   ├── rds.tf             >> RDS resources<br>
+│   ├── rt.tf              >> Route table resources<br>
+│   ├── sg.tf              >> Security group resources<br>
+│   ├── subnet.tf          >> Subnet resources<br>
+│   ├── terraform.tfvars   >> Variable values file<br>
+│   ├── variables.tf       >> Variable definition file<br>
+│   └── vpc.tf             >> VPC resources<br>
+├── README.md<br>
+└── srcApp                 >> Python Flask source code<br>
+    ├── app.py             >> Python application file<br>
+    └── prerequisites.sh   >> Prerequisites should be installed first<br>
 
