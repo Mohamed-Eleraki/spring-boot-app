@@ -17,6 +17,7 @@ Below is the architecture diagram of the project:
 
 
 ## Directory structure discovery
+Below are the project directoy structure<br>
 
 ```bash
 ├── buildspec.yml  >> AWS pipeline configuration file.<br>
@@ -38,6 +39,10 @@ Below is the architecture diagram of the project:
     ├── app.py             >> Python application file<br>
     └── prerequisites.sh   >> Prerequisites should be installed first<br>
 ```
+
+## Project Commits
+Below are the commits made to the project:
+![Architecture Diagram](./project_commits.png)
 
 ## Python Flask application
 
