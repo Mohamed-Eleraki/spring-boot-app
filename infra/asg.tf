@@ -34,10 +34,10 @@ resource "aws_launch_template" "web_launch_template" {
   instance_type = "t2.micro"
 
   tags = local.common_tags
-
+/*
   monitoring {
     enabled = true
-  }
+  }*/
 
   network_interfaces {
     associate_public_ip_address = true
@@ -53,6 +53,11 @@ resource "aws_launch_template" "web_launch_template" {
     #systemctl enable httpd
     ## Create a simple index.html file for testing
     #echo "<h1>Welcome to the Web Server powered by Auto Scaling Group</h1>" > /var/www/html/index.html
+
+    git clone https://github.com/Mohamed-Eleraki/spring-boot-app.git
+    cd spring-boot-app/srcApp/
+    sudo ./prerequisites.sh
+    sudo python3 app.py
   EOF
   )
 }
