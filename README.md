@@ -69,3 +69,19 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
 
 ```
+
+## Run the Flask application manually
+First you need to run the following commands:<br>
+```bash
+sudo yum update -y
+sudo yum install python3 -y
+sudo yum install python3-pip -y
+sudo yum install git -y
+sudo pip3 install psycopg2-binary Flask
+```
+<br><br>
+
+Then, run the application:
+```bash
+sudo python3 app.py
+```
