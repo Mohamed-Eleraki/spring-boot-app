@@ -34,10 +34,10 @@ resource "aws_launch_template" "web_launch_template" {
   instance_type = "t2.micro"
 
   tags = local.common_tags
-
+/*
   monitoring {
     enabled = true
-  }
+  }*/
 
   network_interfaces {
     associate_public_ip_address = true
