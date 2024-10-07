@@ -15,7 +15,7 @@ phases:
     runtime-versions:
       python: 3.12
     
-    on-failuer: ABORT
+    on-failure: ABORT
     commands: |
       #!/bin/bash
       echo ""
@@ -48,6 +48,7 @@ phases:
     on-failure: ABORT
     commands: |
       #!/bin/bash
+      set -e  # Exit the script if any command fails
       if [ "$STAGE_TYPE" = "plan" ]; then
         echo "Filter on Plan stage";
         echo terraform plan started on `date`
