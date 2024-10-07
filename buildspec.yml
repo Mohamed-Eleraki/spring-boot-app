@@ -61,21 +61,6 @@ phases:
       else
         echo "No Plan stage";
       fi
-      echo ""
-      if [ "$STAGE_TYPE" = "scan" ]; then
-        echo "Filter on scan stage";
-        echo terraform plan scanning started on `date`;
-        #cd "CODEBUILD_SRC_DIR/AWS_Demo/37-build-test-pipeline";
-        cd "infra";
-        ls -lathr;
-        terraform init;
-        terraform validate;
-        terraform plan -out tfplan.binary;
-        terraform show -json tfplan.binary | jq > tfplan.json;
-        checkov -f tfplan.json;
-      else
-        echo "No Scan stage";
-      fi
 
   build:
     on-failure: ABORT
@@ -99,33 +84,48 @@ phases:
   post_build:
     on-failure: CONTINUE
     commands: |
-      #!/bin/bash
-      echo "Fetching provisioning details"
-      terraform show -json tfplan > tfplan.json
-      yum install -y jq
-      echo "print out terrafrom version and json format version"
-      jq '.terraform_version, .format_version' tfplan.json
       echo ""
-      echo "print out provider config"
-      jq '.configuration.provider_config' tfplan.json
-      echo ""
-      echo "print out resource config"
-      jq '.configuration.root_module.resources' tfplan.json
-      echo ""
-      echo "print out outputs"
-      jq '.outputs' tfplan.json
-      echo ""
-      echo "print out resource changes"
-      jq '.resource_changes' tfplan.json
-      echo ""
-      echo "print out resource config"
-      jq '.configuration.root_module.resources' tfplan.json
-      echo ""
-      echo "print out provider config"
-      jq '.configuration.provider_config' tfplan.json
-      echo ""
-      echo "print out provider config"
-      jq '.configuration.provider_config' tfplan.json
-      echo ""
-      echo "print out lock file configuration"
-      jq '.configuration.lock_version' tfplan.json
+      if [ "$STAGE_TYPE" = "scan" ]; then
+        echo "Filter on scan stage";
+        echo terraform plan scanning started on `date`;
+        #cd "CODEBUILD_SRC_DIR/AWS_Demo/37-build-test-pipeline";
+        cd "infra";
+        ls -lathr;
+        terraform init;
+        terraform validate;
+        terraform plan -out tfplan.binary;
+        terraform show -json tfplan.binary | jq > tfplan.json;
+        checkov -f tfplan.json;
+      else
+        echo "No Scan stage";
+      fi
+      # #!/bin/bash
+      # echo "Fetching provisioning details"
+      # terraform show -json tfplan > tfplan.json
+      # yum install -y jq
+      # echo "print out terrafrom version and json format version"
+      # jq '.terraform_version, .format_version' tfplan.json
+      # echo ""
+      # echo "print out provider config"
+      # jq '.configuration.provider_config' tfplan.json
+      # echo ""
+      # echo "print out resource config"
+      # jq '.configuration.root_module.resources' tfplan.json
+      # echo ""
+      # echo "print out outputs"
+      # jq '.outputs' tfplan.json
+      # echo ""
+      # echo "print out resource changes"
+      # jq '.resource_changes' tfplan.json
+      # echo ""
+      # echo "print out resource config"
+      # jq '.configuration.root_module.resources' tfplan.json
+      # echo ""
+      # echo "print out provider config"
+      # jq '.configuration.provider_config' tfplan.json
+      # echo ""
+      # echo "print out provider config"
+      # jq '.configuration.provider_config' tfplan.json
+      # echo ""
+      # echo "print out lock file configuration"
+      # jq '.configuration.lock_version' tfplan.json
