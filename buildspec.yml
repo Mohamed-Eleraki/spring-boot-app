@@ -62,7 +62,7 @@ phases:
   terraform_plan_scanning:
     on-failure: ABORT
     commands: |
-       if [ "$STAGE_TYPE" = "scan" ]; then
+      if [ "$STAGE_TYPE" = "scan" ]; then
         echo "Filter on scan stage";
         echo terraform plan scanning started on `date`
         #cd "CODEBUILD_SRC_DIR/AWS_Demo/37-build-test-pipeline";
@@ -75,7 +75,7 @@ phases:
         checkov -f tfplan.json;
       else
         echo "No Scan stage";
-      fi     
+      fi
 
   build:
     on-failure: ABORT
