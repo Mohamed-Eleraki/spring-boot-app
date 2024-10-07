@@ -36,7 +36,7 @@ phases:
       echo ""
       echo "Installing json query"
       sudo yum install jq -y
-      jq --versin
+      jq --version
       echo ""
       echo "Installing checkov"
       pip3 install checkov
@@ -57,7 +57,7 @@ phases:
         terraform plan -out tfplan;
       else
         echo "No Plan stage";
-      fi;
+      fi
 
       if [ "$STAGE_TYPE" = "scan" ]; then
         echo "Filter on scan stage";
