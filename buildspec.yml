@@ -57,7 +57,10 @@ phases:
         ls -lathr;
         terraform init;
         terraform validate;
-        terraform plan;
+        #terraform plan;
+        terraform plan -out tfplan.binary;
+        terraform show -json tfplan.binary | jq > tfplan.json;
+        checkov -f tfplan.json;
       else
         echo "No Plan stage";
       fi
