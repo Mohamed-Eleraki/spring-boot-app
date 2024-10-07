@@ -57,11 +57,8 @@ phases:
         terraform plan -out tfplan;
       else
         echo "No Plan stage";
-      fi
-  
-  terraform_plan_scanning:
-    on-failure: ABORT
-    commands: |
+      fi;
+
       if [ "$STAGE_TYPE" = "scan" ]; then
         echo "Filter on scan stage";
         echo terraform plan scanning started on `date`
