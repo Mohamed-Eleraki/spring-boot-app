@@ -45,7 +45,7 @@ phases:
       echo "Installing checkov"
       pip3 install checkov
       echo ""
-      echo "printing checkov version"
+      echo "print checkov version"
       checkov --version
 
 
