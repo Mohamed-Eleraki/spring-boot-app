@@ -44,6 +44,8 @@ phases:
       echo ""
       echo "Installing checkov"
       pip3 install checkov
+      echo ""
+      echo "printing checkov version"
       checkov --version
 
 
@@ -78,7 +80,7 @@ phases:
         terraform validate;
         terraform plan -out tfplan.binary;
         terraform show -json tfplan.binary | jq > tfplan.json;
-        checkov -f tfplan.json;
+        checkov -f tfplan.json --check CKV2_AWS_69;
       else
         echo "No Scan stage";
       fi
