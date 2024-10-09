@@ -2,3 +2,7 @@ infra/terraform/*
 infra/.terraform/terraform.tfstate
 infra/.terraform/providers/registry.terraform.io/hashicorp/aws/5.70.0/linux_amd64/LICENSE.txt
 infra/.terraform/providers/registry.terraform.io/hashicorp/aws/5.70.0/linux_amd64/terraform-provider-aws_v5.70.0_x5
+20241009-160646_container_images.csv
+20241009-160646_iac.csv
+20241009-160646_oss_packages.csv
+checkov.csv
