@@ -6,3 +6,5 @@ infra/.terraform/providers/registry.terraform.io/hashicorp/aws/5.70.0/linux_amd6
 20241009-160646_iac.csv
 20241009-160646_oss_packages.csv
 checkov.csv
+infra/tfplan.binary
+infra/tfplan.json

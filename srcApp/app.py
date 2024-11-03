@@ -6,10 +6,10 @@ app = Flask(__name__)
 def connect_db():
     try:
         conn = psycopg2.connect(
-            host="terraform-20241005095652655600000004.cjeqis2oi24n.us-east-1.rds.amazonaws.com",
+            host="terraform-20241103035945975700000004.cjeqis2oi24n.us-east-1.rds.amazonaws.com",
             database="postgres",  
             user="postgres",      
-            password="vIv8GrbF}WqKOk|lyAJh2e:]%YHR" 
+            password="(iT}Halc!P)zb4e3msn1}*LOl(.u" 
         )
         return "Connected to the database!"
     except Exception as e:

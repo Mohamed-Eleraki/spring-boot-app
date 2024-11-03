@@ -27,7 +27,7 @@ resource "aws_db_instance" "rds_postgres_instance" {
   allow_major_version_upgrade = false # default is false
   copy_tags_to_snapshot       = true
   delete_automated_backups    = true # Auto delete backups after RDS deleted | default is true
-  enabled_cloudwatch_logs_exports = ["general", "error", "slowquery"]
+  #enabled_cloudwatch_logs_exports = ["general", "error", "slowquery"]
   performance_insights_enabled   = true
   performance_insights_kms_key_id = aws_kms_key.rds_performance_insights_key.arn
   blue_green_update {                # ensuring the Updates applies by AWS applies via Blue/Green deployment

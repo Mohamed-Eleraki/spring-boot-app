@@ -53,7 +53,7 @@ resource "aws_launch_template" "web_launch_template" {
     #systemctl enable httpd
     ## Create a simple index.html file for testing
     #echo "<h1>Welcome to the Web Server powered by Auto Scaling Group</h1>" > /var/www/html/index.html
-
+    yum install git -y
     git clone https://github.com/Mohamed-Eleraki/spring-boot-app.git
     cd spring-boot-app/srcApp/
     sudo ./prerequisites.sh

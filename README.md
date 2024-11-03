@@ -40,6 +40,13 @@ Below are the project directoy structure<br>
     └── prerequisites.sh   >> Prerequisites should be installed first<br>
 ```
 <br><br>
+
+
+## info
+- Update RDS endpoint in the python script.
+- update master passswrod in the python script.
+
+<br><br>
 ## Project Commits
 Below are the commits made to the project:
 ![Architecture Diagram](./project_commits.png)
